@@ -1,7 +1,5 @@
-const low = require("lowdb")
-const FileSync = require('lowdb/adapters/FileSync')
-
-
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 
 const adapter = new FileSync("./db.json", {
   serialize: (data) => JSON.stringify(data),
@@ -9,11 +7,18 @@ const adapter = new FileSync("./db.json", {
 });
 const db = low(adapter);
 
-db.defaults({ posts: [], path: "."}).write();
+const defaultConfig = {
+  frontmatter: "yaml",
+  encoding: "utf8",
+};
 
-const Post = db.get('posts')
+db.defaults({ posts: [], config: defaultConfig }).write();
 
+const Post = db.get("posts");
+const Config = db.get("config");
 module.exports = {
   db,
-  Post
-}
+  Post,
+  Config,
+  defaultConfig,
+};

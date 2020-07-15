@@ -3,12 +3,15 @@ const { Command, flags } = require("@oclif/command");
 const fs = require("fs");
 const join = require("path").join;
 const matter = require("gray-matter");
-const { db, Post } = require("../lib/db");
+const { db, Post, Config } = require("../lib/db");
+
+const config = Config.value();
 
 class AddCommand extends Command {
+  static args = [{ name: "path" }];
   async run() {
-    const { flags } = this.parse(AddCommand);
-    const path = flags.path || ".";
+    const { args } = this.parse(AddCommand);
+    const path = args.path || ".";
     // const type = flags.type || "yaml";
 
     console.log("path is", path);
@@ -27,11 +30,29 @@ class AddCommand extends Command {
           files.forEach((file) => this.add(join(path, file)));
         });
       } else {
-        const data = matter.read(path);
-        Post.push({
-          path,
-          matter: data.data,
-        }).write();
+        fs.readFile(path, { encoding: config.encoding }, (err, rowdata) => {
+          if (err) {
+            console.log(path, err);
+            return;
+          }
+          const data = matter(rowdata, {
+            language: config.frontmatter,
+          });
+
+          if (Post.find({ path }).value()) {
+            Post.find({ path })
+              .assign({
+                path,
+                matter: data.data,
+              })
+              .write();
+          } else {
+            Post.push({
+              path,
+              matter: data.data,
+            }).write();
+          }
+        });
       }
     });
   }
@@ -42,18 +63,6 @@ AddCommand.description = `Add post(s)
 parse post frontmatter into database.
 `;
 
-AddCommand.flags = {
-  path: flags.string({
-    char: "p",
-    description: 'input directory (default is ".")',
-    required: false,
-  }),
-  // type: flags.string({
-  //   char: "t",
-  //   description: "frontmatter type(default is yaml)",
-  //   required: false,
-  //   options: ["yaml", "json"],
-  // }),
-};
+AddCommand.flags = {};
 
 module.exports = AddCommand;
