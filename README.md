@@ -19,7 +19,7 @@ $ npm install -g f3m
 $ f3m COMMAND
 running command...
 $ f3m (-v|--version|version)
-f3m/0.0.2 linux-x64 node-v12.16.3
+f3m/0.0.3 linux-x64 node-v12.16.3
 $ f3m --help [COMMAND]
 USAGE
   $ f3m COMMAND
@@ -28,36 +28,54 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`f3m add`](#f3m-add)
-* [`f3m dump`](#f3m-dump)
-* [`f3m hello`](#f3m-hello)
+* [`f3m add [PATH]`](#f3m-add-path)
+* [`f3m config [SUBCOMMAND]`](#f3m-config-subcommand)
+* [`f3m dump [PATH]`](#f3m-dump-path)
 * [`f3m help [COMMAND]`](#f3m-help-command)
 
-## `f3m add`
+## `f3m add [PATH]`
 
 Add post(s)
 
 ```
 USAGE
-  $ f3m add
-
-OPTIONS
-  -p, --path=path  input directory (default is ".")
+  $ f3m add [PATH]
 
 DESCRIPTION
   ...
   parse post frontmatter into database.
 ```
 
-_See code: [src/commands/add.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/add.js)_
+_See code: [src/commands/add.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.3/src/commands/add.js)_
 
-## `f3m dump`
+## `f3m config [SUBCOMMAND]`
+
+Show and set config
+
+```
+USAGE
+  $ f3m config [SUBCOMMAND]
+
+OPTIONS
+  -e, --encoding=encoding        set encoding config
+  -f, --frontmatter=frontmatter  set frontmatter type config
+  -n, --name=name                name to print
+
+DESCRIPTION
+  ...
+  f3m config set -f yaml -c utf8
+  f3m config show # or f3m config
+```
+
+_See code: [src/commands/config.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.3/src/commands/config.js)_
+
+## `f3m dump [PATH]`
 
 Describe the command here
 
 ```
 USAGE
-  $ f3m dump
+  $ f3m dump [PATH]
 
 OPTIONS
   -n, --name=name  name to print
@@ -67,25 +85,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/dump.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/dump.js)_
-
-## `f3m hello`
-
-Describe the command here
-
-```
-USAGE
-  $ f3m hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/hello.js)_
+_See code: [src/commands/dump.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.3/src/commands/dump.js)_
 
 ## `f3m help [COMMAND]`
 

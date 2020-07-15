@@ -1,7 +1,7 @@
 {
   "name": "f3m",
   "description": "A frontmatter based markdown manager.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "wuxiaobai24 @wuxiaobai24",
   "bin": {
     "f3m": "./bin/run"
