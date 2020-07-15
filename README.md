@@ -19,7 +19,7 @@ $ npm install -g f3m
 $ f3m COMMAND
 running command...
 $ f3m (-v|--version|version)
-f3m/0.0.1 linux-x64 node-v12.16.3
+f3m/0.0.2 linux-x64 node-v12.16.3
 $ f3m --help [COMMAND]
 USAGE
   $ f3m COMMAND
@@ -29,6 +29,8 @@ USAGE
 # Commands
 <!-- commands -->
 * [`f3m add`](#f3m-add)
+* [`f3m dump`](#f3m-dump)
+* [`f3m hello`](#f3m-hello)
 * [`f3m help [COMMAND]`](#f3m-help-command)
 
 ## `f3m add`
@@ -40,15 +42,50 @@ USAGE
   $ f3m add
 
 OPTIONS
-  -p, --path=path       input directory (default is ".")
-  -t, --type=yaml|json  frontmatter type(default is yaml)
+  -p, --path=path  input directory (default is ".")
 
 DESCRIPTION
   ...
   parse post frontmatter into database.
 ```
 
-_See code: [src/commands/add.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.1/src/commands/add.js)_
+_See code: [src/commands/add.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/add.js)_
+
+## `f3m dump`
+
+Describe the command here
+
+```
+USAGE
+  $ f3m dump
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/dump.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/dump.js)_
+
+## `f3m hello`
+
+Describe the command here
+
+```
+USAGE
+  $ f3m hello
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/hello.js](https://github.com/wuxiaobai24/f3m/blob/v0.0.2/src/commands/hello.js)_
 
 ## `f3m help [COMMAND]`
 

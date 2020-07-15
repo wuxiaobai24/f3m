@@ -82,3 +82,4 @@ typings/
 yarn-debug.log*
 yarn-error.log*
 db.json
+dump-test/
